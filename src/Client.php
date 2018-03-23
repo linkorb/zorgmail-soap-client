@@ -7,7 +7,7 @@ use SoapClient;
 class Client
 {
     protected $soapClient;
-    protected static $wsdl = 'https://lms.lifeline.nl/mailwebservice/inline/ems-mailwebservice-inline.wsdl';
+    protected static $wsdl = __DIR__ . '/../ems-mailwebservice-inline.wsdl';
     protected $accountId;
 
     private function __construct()

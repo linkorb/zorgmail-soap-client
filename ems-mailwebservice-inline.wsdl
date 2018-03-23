@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="UTF-8"?><wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:schema="http://www.enovation.nl/ems/mailwebservice" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" targetNamespace="http://www.enovation.nl/ems/mailwebservice">
+  <wsdl:types>
+    <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:tns="http://www.enovation.nl/ems/mailwebservice" xmlns:xmime="http://www.w3.org/2005/05/xmlmime" elementFormDefault="qualified" targetNamespace="http://www.enovation.nl/ems/mailwebservice">
+
+    <element name="SendRequest" type="tns:SendMessage"/>
+    
+    <element name="SendRfc822Request" type="tns:SendRfc822Message"/>
+    
+	<element name="DeleteRequest" type="tns:UniqueIdRequest"/>
+  
+    <element name="RetrieveRequest" type="tns:UniqueIdRequest"/>
+        
+	<element name="RetrieveRfc822Request" type="tns:UniqueIdRequest"/>
+	
+    <element name="RetrieveResponse" type="tns:Message"/>
+    
+    <element name="RetrieveRfc822Response" type="tns:Message"/>
+   
+	<element name="ListRequest" type="tns:AccountIdRequest"/>
+
+    <element name="ListResponse" type="tns:ListResponse"/>
+
+	<element name="StatRequest" type="tns:AccountIdRequest"/>
+
+    <element name="StatResponse" type="tns:StatResponse"/>    
+    
+    <element name="UploadCertificateRequest" type="tns:UploadCertificate"/>
+    
+    <complexType name="SendMessage">
+        	<sequence>
+        		<element name="messageId" type="string"/>
+      			<element name="sender" type="string"/>
+      			<element name="recipient" type="string"/>
+      			<element name="subject" type="string"/>
+      			<element name="contentType" type="string"/>
+            	<element name="content" type="base64Binary" xmime:expectedContentTypes="*/*"/>
+        	</sequence>
+   	</complexType>
+   	
+    <complexType name="SendRfc822Message">
+        	<sequence>
+      			<element name="sender" type="string"/>
+      			<element name="recipient" type="string"/>
+            	<element name="content" type="base64Binary" xmime:expectedContentTypes="*/*"/>
+        	</sequence>
+   	</complexType>
+   	
+    <complexType name="Message">
+    	<sequence>
+      		<element name="messageId" type="string"/>
+      		<element name="sourceAccountId" type="string"/>
+      		<element name="sourceAddress" nillable="true" type="string"/>
+      		<element name="receiveTimestamp" type="dateTime"/>
+      		<element name="headerMessageId" type="string"/>
+      		<element name="headerSubject" nillable="true" type="string"/>
+      		<element name="headerFrom" nillable="true" type="string"/>
+      		<element name="headerTo" nillable="true" type="string"/>
+      		<element name="documentFormat" type="string"/>
+      		<element name="documentType" type="string"/>
+      		<element name="documentCount" type="int"/>
+			<element name="documentItemCount" type="int"/>
+			<element name="documentId" nillable="true" type="string"/>
+			<element name="documentTimestamp" nillable="true" type="dateTime"/>
+			<element name="documentSender" nillable="true" type="string"/>
+			<element name="documentRecipient" nillable="true" type="string"/>
+			<element name="documentSubject" nillable="true" type="string"/>
+      		<element name="documentTypeVersion" nillable="true" type="string"/>
+      		<element name="documentSubType" nillable="true" type="string"/>
+      		<element name="contentType" type="string"/>
+      		<element name="content" type="base64Binary" xmime:expectedContentTypes="*/*"/>
+    	</sequence>
+  	</complexType>
+  	
+  	<complexType name="UniqueIdRequest">
+    	<sequence>
+    		<element name="uniqueId" type="string"/>
+    	</sequence>
+  	</complexType>
+  	
+  	<complexType name="AccountIdRequest">
+    	<sequence>
+    		<element name="accountId" type="string"/>
+    	</sequence>
+  	</complexType>  	
+  	
+  	<complexType name="ListResponse">
+    	<sequence>
+      		<element maxOccurs="unbounded" minOccurs="0" name="uniqueIds" type="string"/>
+    	</sequence>
+  	</complexType>
+  	
+  	<complexType name="StatResponse">
+  		<sequence>
+      		<element name="count" type="int"/>
+		</sequence>
+  	</complexType>  
+
+    <complexType name="UploadCertificate">
+        	<sequence>
+            	<element name="certificate" type="base64Binary" xmime:expectedContentTypes="*/*"/>
+        	</sequence>
+   	</complexType>
+   	
+</schema>
+  </wsdl:types>
+  <wsdl:message name="SendRfc822Request">
+    <wsdl:part element="schema:SendRfc822Request" name="SendRfc822Request">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ListResponse">
+    <wsdl:part element="schema:ListResponse" name="ListResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ListRequest">
+    <wsdl:part element="schema:ListRequest" name="ListRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="UploadCertificateRequest">
+    <wsdl:part element="schema:UploadCertificateRequest" name="UploadCertificateRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RetrieveRfc822Response">
+    <wsdl:part element="schema:RetrieveRfc822Response" name="RetrieveRfc822Response">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RetrieveResponse">
+    <wsdl:part element="schema:RetrieveResponse" name="RetrieveResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RetrieveRequest">
+    <wsdl:part element="schema:RetrieveRequest" name="RetrieveRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="StatResponse">
+    <wsdl:part element="schema:StatResponse" name="StatResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="RetrieveRfc822Request">
+    <wsdl:part element="schema:RetrieveRfc822Request" name="RetrieveRfc822Request">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="DeleteRequest">
+    <wsdl:part element="schema:DeleteRequest" name="DeleteRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="SendRequest">
+    <wsdl:part element="schema:SendRequest" name="SendRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="StatRequest">
+    <wsdl:part element="schema:StatRequest" name="StatRequest">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:portType name="MailService">
+    <wsdl:operation name="SendRfc822">
+      <wsdl:input message="schema:SendRfc822Request" name="SendRfc822Request">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="List">
+      <wsdl:input message="schema:ListRequest" name="ListRequest">
+    </wsdl:input>
+      <wsdl:output message="schema:ListResponse" name="ListResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadCertificate">
+      <wsdl:input message="schema:UploadCertificateRequest" name="UploadCertificateRequest">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="Retrieve">
+      <wsdl:input message="schema:RetrieveRequest" name="RetrieveRequest">
+    </wsdl:input>
+      <wsdl:output message="schema:RetrieveResponse" name="RetrieveResponse">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveRfc822">
+      <wsdl:input message="schema:RetrieveRfc822Request" name="RetrieveRfc822Request">
+    </wsdl:input>
+      <wsdl:output message="schema:RetrieveRfc822Response" name="RetrieveRfc822Response">
+    </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <wsdl:input message="schema:DeleteRequest" name="DeleteRequest">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="Send">
+      <wsdl:input message="schema:SendRequest" name="SendRequest">
+    </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="Stat">
+      <wsdl:input message="schema:StatRequest" name="StatRequest">
+    </wsdl:input>
+      <wsdl:output message="schema:StatResponse" name="StatResponse">
+    </wsdl:output>
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="MailServiceBinding" type="schema:MailService">
+    <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+    <wsdl:operation name="SendRfc822">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SendRfc822Request">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="List">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="ListRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="ListResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="UploadCertificate">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="UploadCertificateRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="Retrieve">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="RetrieveRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="RetrieveResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RetrieveRfc822">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="RetrieveRfc822Request">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="RetrieveRfc822Response">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Delete">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="DeleteRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="Send">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="SendRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+    </wsdl:operation>
+    <wsdl:operation name="Stat">
+      <soap:operation soapAction=""/>
+      <wsdl:input name="StatRequest">
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output name="StatResponse">
+        <soap:body use="literal"/>
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="MailServiceService">
+    <wsdl:port binding="schema:MailServiceBinding" name="MailServicePort">
+      <soap:address location="https://lms.lifeline.nl/mailwebservice/inline/"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

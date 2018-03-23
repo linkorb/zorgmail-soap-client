@@ -4,10 +4,6 @@ Zorgmail SOAP client
 Simple Client library for Zorgmail SOAP service. It just handles the transport,
 no message parsing/generation is being performed by this library.
 
-## WSDL
-
-  * https://lms.lifeline.nl/mailwebservice/inline/ems-mailwebservice-inline.wsdl
-
 ## Testing and development
 
 Copy the `.env.dist` file to `.env` and adjust to your liking.
@@ -16,6 +12,7 @@ You can now run the examples from the `example/` directory.
 
 ## Notes
 
+* This library is using a cached version of the WSDL as the [original](https://lms.lifeline.nl/mailwebservice/inline/ems-mailwebservice-inline.wsdl) requires basic auth to read.
 * In order to send XML formatted EDI messages such as MEDVRI, MEDLAB, etc, you
 need to use `edifactverwerking@lms.lifeline.nl` as the recipient, and address
 the final recipient in the XML message (envelope).
