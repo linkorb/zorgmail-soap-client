@@ -1,0 +1,25 @@
+{
+  "name": "linkorb/zorgmail-soap-client",
+  "description": "Zorgmail SOAP Client for PHP",
+  "homepage": "https://github.com/linkorb/zorgmail-soap-client",
+  "keywords": ["zorgmail", "soap", "linkorb"],
+  "type": "library",
+  "authors": [
+    {
+      "name": "Joost Faassen",
+      "email": "j.faassen@linkorb.com",
+      "role": "Development"
+    }
+  ],
+  "require": {
+  },
+  "require-dev": {
+    "vlucas/phpdotenv": "~2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Zorgmail\\Soap\\": "src/"
+    }
+  },
+  "license": "MIT"
+}
