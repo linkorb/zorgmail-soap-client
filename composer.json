@@ -11,10 +11,9 @@
       "role": "Development"
     }
   ],
-  "require": {
-  },
   "require-dev": {
-    "vlucas/phpdotenv": "~2.0"
+    "vlucas/phpdotenv": "~2.0",
+    "phpunit/phpunit": "^9.6"
   },
   "autoload": {
     "psr-4": {
